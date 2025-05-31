@@ -5,4 +5,5 @@
   "requirements": [],
   "codeowners": ["@mgiako"],
   "iot_class": "cloud_polling"
+  "logo": "logo.svg"
 }
