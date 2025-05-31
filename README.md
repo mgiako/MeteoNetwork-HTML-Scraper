@@ -11,13 +11,13 @@
 
 > **Attenzione:** Se la stazione MeteoNetwork che vuoi integrare **esporta i dati**, ti consiglio fortemente di usare la [repo di Davide Cavestro](https://github.com/davidecavestro/meteonetwork-weather), che fornisce dati strutturati, aggiornamenti più rapidi e maggiore stabilità.  
 > Credo che una stazione **esporti i dati** se, sotto al nome della stazione, vedi l’indicazione _CC-BY 4.0_ (come nell'immagine qui sotto):
-
 ![image](https://github.com/user-attachments/assets/d891b2de-c168-47e9-a2d5-31f81d5ed4ff)
 
 
-> Se **NON** vedi _CC-BY 4.0_ sotto al nome della stazione (esempio: [Belluno Aeroporto](https://www.meteonetwork.eu/it/weather-station/vnt344-stazione-meteorologica-di-belluno-aeroporto)),  
+> Se **NON** vedi _CC-BY 4.0_ sotto al nome della stazione, come nell'immagine qui sotto,
   allora puoi usare questa integrazione che effettua scraping della pagina HTML per ricavare i dati.
   Quindi ti consiglio di provare prima con l'integrazione di Davide Cavestro, e, se non funziona, prova con la mia.
+![image](https://github.com/user-attachments/assets/c6ddd598-9c63-4313-95c9-10869273d7c9)
 
 ---
 
@@ -41,7 +41,7 @@
 **Manuale**
 - Copia la cartella `meteonetwork_html_scraper` in `custom_components` della tua installazione di Home Assistant.
 - Riavvia Home Assistant.
-- Aggiungi l’integrazione.
+- Aggiungi l’integrazione dalle impostazioni.
 
 ---
 
