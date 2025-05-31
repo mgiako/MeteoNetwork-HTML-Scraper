@@ -80,14 +80,9 @@ Apri una issue su GitHub per bug o richieste di miglioramenti.
 
 ### Screenshot
 
-<details>
 <summary>Configurazione</summary>
 ![image](https://github.com/user-attachments/assets/b027abc0-8fbb-4a73-a1b2-7869a1505eed)
 
-</details>
-
-<details>
 <summary>Esempio sensori</summary>
 ![image](https://github.com/user-attachments/assets/3f4e50d7-0798-411e-8da6-66cae5a63f8c)
 
-</details>
