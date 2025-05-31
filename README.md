@@ -1,4 +1,4 @@
-# MeteoNetwork HTML Scraper
+# MeteoNetwork HTML Scraper 
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
 ![license](https://img.shields.io/github/license/mgiako/meteonetwork-html-scraper)
