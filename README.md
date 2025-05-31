@@ -31,7 +31,7 @@
 ## Installazione
 
 **Con HACS**
-1. Vai su HACS → Integrazioni → Repositories personalizzate → Aggiungi questa repo (`https://github.com/mgiako/MeteoNetwork_HTML_Scraper`)
+1. Vai su HACS → Integrazioni → Repositories personalizzate → Aggiungi questa repo (`https://github.com/mgiako/MeteoNetwork-HTML-Scraper`)
 2. Scegli tipo “Integrazione”.
 3. Riavvia Home Assistant.
 4. Aggiungi una nuova integrazione “MeteoNetwork HTML Scraper” dalle impostazioni.
