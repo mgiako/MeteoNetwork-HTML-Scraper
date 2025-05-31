@@ -1,0 +1,16 @@
+{
+  "domain": "meteonetwork_html_scraper",
+  "name": "MeteoNetwork HTML Scraper",
+  "version": "1.0.0",
+  "documentation": "https://github.com/mgiako/MeteoNetwork-HTML-Scraper",
+  "requirements": [
+    "beautifulsoup4",
+    "requests"
+  ],
+  "dependencies": [],
+  "codeowners": [
+    "@mgiako"
+  ],
+  "config_flow": true,
+  "iot_class": "cloud_polling"
+}
