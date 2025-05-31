@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+
+# MacOS
+.DS_Store
+
+# Home Assistant
+home-assistant.log
+home-assistant_v2.db
+
+# Test output
+.coverage
+.tox/
+.pytest_cache/
+
+# Env
+.env
+.venv
+venv/
+ENV/
+env/
