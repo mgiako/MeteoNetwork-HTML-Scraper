@@ -1,7 +1,7 @@
 # MeteoNetwork HTML Scraper
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
-![license](https://img.shields.io/github/license/mgiako/meteonetwork_html_scraper)
+![license](https://img.shields.io/github/license/mgiako/meteonetwork-html-scraper)
 
 **Integrazione custom per Home Assistant che consente di aggiungere i sensori di una stazione MeteoNetwork _anche se non esporta i dati_ in formato open, eseguendo scraping della pagina HTML.**
 
