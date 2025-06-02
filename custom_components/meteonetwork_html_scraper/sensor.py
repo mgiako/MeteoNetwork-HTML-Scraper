@@ -78,6 +78,7 @@ class MeteoNetworkCoordinator(DataUpdateCoordinator):
         self.url = url
         self.sensors = sensors
         self.data = {}
+        self._last_valid = {}  # Nuovo: per salvare ultimi valori validi
 
     def _extract_value(self, soup, label, pattern, fallback_div=None):
         # Cerca nello span
@@ -109,30 +110,40 @@ class MeteoNetworkCoordinator(DataUpdateCoordinator):
             soup = BeautifulSoup(response.text, "html.parser")
             results = {}
 
-            if "temperatura" in self.sensors:
-                value = self._extract_value(soup, "Temperatura", r"([\d.,]+)\s*[°]C")
-                results["temperatura"] = float(value.replace(",", ".")) if value else None
-            if "umidita" in self.sensors:
-                value = self._extract_value(soup, "Umidità", r"([\d.,]+)\s*%")
-                results["umidita"] = float(value.replace(",", ".")) if value else None
-            if "pioggia" in self.sensors:
-                value = self._extract_value(soup, "Pioggia", r"([\d.,]+)\s*mm")
-                results["pioggia"] = float(value.replace(",", ".")) if value else None
-            if "pressione" in self.sensors:
-                value = self._extract_value(soup, "Pressione", r"([\d.,]+)\s*hPa")
-                results["pressione"] = float(value.replace(",", ".")) if value else None
-            if "radiazione_solare" in self.sensors:
-                value = self._extract_value(soup, "", r"([\d.,]+)\s*W/m", fallback_div="Radiazione solare")
-                results["radiazione_solare"] = float(value.replace(",", ".")) if value else None
-            if "vento" in self.sensors:
-                value = self._extract_value(soup, "Vento", r"([\d.,]+)\s*km/h")
-                results["vento"] = float(value.replace(",", ".")) if value else None
+            for sensor in self.sensors:
+                if sensor == "temperatura":
+                    value = self._extract_value(soup, "Temperatura", r"([\d.,]+)\s*[°]C")
+                elif sensor == "umidita":
+                    value = self._extract_value(soup, "Umidità", r"([\d.,]+)\s*%")
+                elif sensor == "pioggia":
+                    value = self._extract_value(soup, "Pioggia", r"([\d.,]+)\s*mm")
+                elif sensor == "pressione":
+                    value = self._extract_value(soup, "Pressione", r"([\d.,]+)\s*hPa")
+                elif sensor == "radiazione_solare":
+                    value = self._extract_value(soup, "", r"([\d.,]+)\s*W/m", fallback_div="Radiazione solare")
+                elif sensor == "vento":
+                    value = self._extract_value(soup, "Vento", r"([\d.,]+)\s*km/h")
+                else:
+                    value = None
+
+                if value is not None:
+                    value = float(value.replace(",", "."))
+                # --- Qui la logica anti-zero solo per temperatura e umidità
+                if sensor in ("temperatura", "umidita"):
+                    if value is not None and value != 0:
+                        self._last_valid[sensor] = value
+                        results[sensor] = value
+                    elif sensor in self._last_valid:
+                        results[sensor] = self._last_valid[sensor]
+                    else:
+                        results[sensor] = None
+                else:
+                    results[sensor] = value
 
             return results
         except Exception as e:
             _LOGGER.error(f"Errore aggiornando dati MeteoNetwork: {e}")
             return {}
-
 
 class MeteoNetworkSensor(CoordinatorEntity, SensorEntity):
     def __init__(self, coordinator, sensor_type, station_name):
