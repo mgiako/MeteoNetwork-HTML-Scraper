@@ -72,7 +72,7 @@ During configuration you will be asked for:
 
 ## License
 
-MIT (or any you prefer)
+MIT
 
 ---
 
